@@ -1,5 +1,5 @@
 <ul class="sf-menu" id="nav">
-    <li class="selected"><a href="<?php echo $menuNivel; ?>index.html">Inicio</a></li>
+    <li class="selected"><a href="<?php echo $menuNivel; ?>index.php">Inicio</a></li>
     <li><a href="#">Consulta</a>
         <ul>
             <li><a href="<?php echo $menuNivel; ?>consulta/cs/">Contrato de Servicio</a></li>

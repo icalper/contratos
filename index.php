@@ -33,7 +33,7 @@ $sesion = new manejadorSesion;
     </header>
     <div id="site_content">
       <div id="content">
-        <h1>Welcome to photo_style_two</h1>
+<!--        <h1>Welcome to photo_style_two</h1>
         <p>This standards compliant, fixed width website template is released as an 'open source' design (under a <a href="http://creativecommons.org/licenses/by/3.0">Creative Commons Attribution 3.0 Licence</a>), which means that you are free to use it for anything you want (including modifying and amending it). All I ask is that you leave the 'design from css3templates.co.uk' link in the footer of the template. All of the photos were taken by me - use as you wish.</p>
         <h3>Browser Compatibility</h3>
         <p>This template has been tested in the following browsers:</p>
@@ -41,12 +41,12 @@ $sesion = new manejadorSesion;
           <li>Internet Explorer 8</li>
           <li>Internet Explorer 7</li>
           <li>FireFox 10</li>
-          <li>Google Chrome 17</li>
+          <li>Google Chrome 17</li>-->
         </ul>
       </div>
     </div>
     <footer>
-      <p>Copyright &copy; photo_style_two | <a href="http://www.css3templates.co.uk">design from css3templates.co.uk</a></p>
+<!--      <p>Copyright &copy; photo_style_two | <a href="http://www.css3templates.co.uk">design from css3templates.co.uk</a></p>-->
     </footer>
   </div>
   <p>&nbsp;</p>
