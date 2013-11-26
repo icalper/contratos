@@ -1,4 +1,13 @@
 <?php
+require '../../librerias/sesion.php';
+$nivelAcceso = manejadorSesion::USUARIO_ADMIN;
+$sesion = new manejadorSesion;
+
+if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad por privilegios
+    header("Location: ../../index.php");
+}
+?>
+<?php
 $campos = array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'cambioSup', 'supCivil', 'supMecanica', 'supPlantas', 'supElectrica', 'supInstrumentos', 'multianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'saldo2013', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
 $nombres_campos = array('Especialidad', 'Descripcion', 'Tipo de contrato', 'Compania', 'Supervisor', 'Cambio de Supervisor',
     'Supervisor Fase Civil', 'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Electrica', 'Supervisor Fase Instrumentos', 'Multianualidad',
@@ -26,16 +35,16 @@ $campos_filtrados = array_filter($campos_consulta);
         <title>Consulta de contratos de Servicio</title>
 
         <style type="text/css" title="currentStyle">
-            @import "../datatables/media/css/jquery.dataTables_themeroller.css";
-            @import "../themeroller/css/cupertino/jquery-ui-1.10.3.custom.css";
+            @import "../../librerias/datatables/media/css/jquery.dataTables_themeroller.css";
+            @import "../../librerias/themeroller/css/cupertino/jquery-ui-1.10.3.custom.css";
         </style>
         <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 
 
         <!--<script type="text/javascript" charset="utf-8" src="../../datatables/media/js/jquery.js"></script>-->
         <script type="text/javascript" src="../../js/jquery.js"></script>
-        <script type="text/javascript" charset="utf-8" src="../jquery.jeditable.js"></script>
-        <script type="text/javascript" charset="utf-8" src="../../datatables/media/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" charset="utf-8" src="../../librerias/jquery.jeditable.js"></script>
+        <script type="text/javascript" charset="utf-8" src="../../librerias/datatables/media/js/jquery.dataTables.js"></script>
         <script type="text/javascript" src="../../js/jquery.easing-sooper.js"></script>
         <script type="text/javascript" src="../../js/jquery.sooperfish.js"></script>
         <script type="text/javascript" src="../../js/image_fade.js"></script>
@@ -69,7 +78,7 @@ $campos_filtrados = array_filter($campos_consulta);
                     "sScrollX": "200%",
                     //"bScrollCollapse": true,
                     "oLanguage": {
-                        "sUrl": "../../datatables/media/language/spanish.txt"
+                        "sUrl": "../../librerias/datatables/media/language/spanish.txt"
                     },
                     "fnDrawCallback": function() {
                         $('#contratos tbody td[class!="readonly"]').editable('ajax.php', {
@@ -140,26 +149,10 @@ foreach ($campos as $id => $valor) {
                     </div>
                 </div>
                 <nav>
-                    <ul class="sf-menu" id="nav">
-                        <li class="selected"><a href="../../index.html">Inicio</a></li>
-                        <li><a href="#">Consulta</a>
-                            <ul>
-                                <li><a href="../../consulta/cs/">Contrato de Servicio</a></li>
-                                <li><a href="../../consulta/co/">Contrato de Obra</a></li>
-                                <li><a href="../../consulta/cci/">Contrato de Compra con Instalacion</a></li>
-                                <li><a href="../../consulta/aa/">Acuerdos Administrativos</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Importar</a>
-                            <ul>
-                                <li><a href="../../importar/importar_cs.php">Contrato de Servicio</a></li>
-                                <li><a href="../../importar/importar_co.php">Contrato de Obra</a></li>
-                                <li><a href="../../importar/importar_compras_inst.php">Contrato de Compra con Instalacion</a></li>
-                                <li><a href="../../importar/importar_acuerdos.php">Acuerdos Administrativos</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Acerca de...</a></li>
-                    </ul>
+                    <?php
+                    $menuNivel = "../../";         // Este codigo reemplaza al menu
+                    require '../../menu.php';
+                    ?>
                 </nav>
             </header>
             <div id="site_content">
