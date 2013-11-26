@@ -1,0 +1,42 @@
+<ul class="sf-menu" id="nav">
+    <li class="selected"><a href="<?php echo $menuNivel; ?>index.html">Inicio</a></li>
+    <li><a href="#">Consulta</a>
+        <ul>
+            <li><a href="<?php echo $menuNivel; ?>consulta/cs/">Contrato de Servicio</a></li>
+            <li><a href="<?php echo $menuNivel; ?>consulta/co/">Contrato de Obra</a></li>
+            <li><a href="<?php echo $menuNivel; ?>consulta/cci/">Contrato de Compra con Instalacion</a></li>
+            <li><a href="<?php echo $menuNivel; ?>consulta/aa/">Acuerdos Administrativos</a></li>
+        </ul>
+    </li>
+    <li><a href="#">Importar</a>
+        <ul>
+            <li><a href="<?php echo $menuNivel; ?>importar/importar_cs.php">Contrato de Servicio</a></li>
+            <li><a href="<?php echo $menuNivel; ?>importar/importar_co.php">Contrato de Obra</a></li>
+            <li><a href="<?php echo $menuNivel; ?>importar/importar_compras_inst.php">Contrato de Compra con Instalacion</a></li>
+            <li><a href="<?php echo $menuNivel; ?>importar/importar_acuerdos.php">Contrato de Acuerdos Administrativos</a></li>
+        </ul>
+    </li>
+    <li><a href="#">Acerca de...</a></li>
+</ul>
+<ul class="sf-menu" id="nav2">
+    <li>
+        <?php
+        if ($sesion->getPrivilegios() == manejadorSesion::USUARIO_DESCONOCIDO) {
+            $texto = "Iniciar sesión...";
+            $link = $menuNivel . "login.php";
+            ?>
+            <a href="<?php echo $link; ?>"><?php echo $texto; ?></a>
+            <?php
+        } else {
+
+            $texto = "Usuario: " . $sesion->getNombreUsuario();
+            $link = "#";
+            $link_logout = $menuNivel . "logout.php";
+            ?>
+            <a href="<?php echo $link; ?>"><?php echo $texto; ?></a>
+            <?php
+            echo "<ul><li><a href=\"$link_logout\">Cerrar sesión</a></li></ul>";
+        }
+        ?>
+    </li>
+</ul>

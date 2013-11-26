@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title><?php echo $titulo ?></title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="../js/modernizr-1.5.min.js"></script>
+</head>
+
+<body>
+  <div id="main">
+    <header>
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="../index.html">Gestion <span class="logo_colour">de contratos</span></a></h1>
+          <h2>PEMEX</h2>
+        </div>
+      </div>
+      <nav>
+        <ul class="sf-menu" id="nav">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="#">Consulta</a>
+              <ul>
+                  <li><a href="../consulta/cs/">Contrato de Servicio</a></li>
+                  <li><a href="../consulta/co/">Contrato de Obra</a></li>
+                  <li><a href="../../consulta/cci/">Contrato de Compra con Instalacion</a></li>
+                  <li><a href="../../consulta/aa/">Acuerdos Administrativos</a></li>
+              </ul>
+          </li>
+          <li class="selected"><a href="#">Importar</a>
+              <ul>
+ 		  <li><a href="importar_cs.php">Contrato de Servicio</a></li>
+                  <li><a href="importar_co.php">Contrato de Obra</a></li>
+                  <li><a href="importar_compras_inst.php">Contrato de Compra con Instalacion</a></li>
+                  <li><a href="importar_acuerdos.php">Acuerdos Administrativos</a></li>
+              </ul>
+          </li>
+          <li><a href="#">Acerca de...</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="site_content">
+      <div id="content">
