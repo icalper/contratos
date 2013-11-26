@@ -1,3 +1,4 @@
+//inicio de usuario
 <?php
 require '../../librerias/sesion.php';
 $nivelAcceso = manejadorSesion::USUARIO_ADMIN;
