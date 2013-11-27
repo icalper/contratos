@@ -8,6 +8,10 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
 }
 ?>
 
+<?php 
+$titulo="Importar Contratos de Obra desde archivo excel"; 
+require 'importar.head';
+?>
 <!-- FORMULARIO PARA SOICITAR LA CARGA DEL EXCEL -->
 
 <h1><?php echo $titulo; ?></h1>
@@ -123,4 +127,5 @@ unlink($destino);
 }
 
 
+require 'importar.foot';
 ?>

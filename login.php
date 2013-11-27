@@ -25,7 +25,7 @@ if ($sesion->getPrivilegios() > $nivelAcceso) {
                 <div id="logo">
                     <div id="logo_text">
                         <!-- class="logo_colour", allows you to change the colour of the text -->
-                        <h1><a href="index.html">Gestion <span class="logo_colour">de contratos</span></a></h1>
+                        <h1><a href="index.php">Gestion <span class="logo_colour">de contratos</span></a></h1>
                         <h2>PEMEX</a></h2>
                     </div>
                 </div>

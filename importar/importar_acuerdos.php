@@ -7,7 +7,10 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
     header("Location: ../index.php");
 }
 ?>
-
+<?php 
+$titulo="Importar Contratos de Obra desde archivo excel"; 
+require 'importar.head';
+?>
 <!-- FORMULARIO PARA SOICITAR LA CARGA DEL EXCEL -->
 
 <h1><?php echo $titulo; ?></h1>
