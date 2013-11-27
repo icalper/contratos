@@ -1,4 +1,6 @@
 <!-- http://ProgramarEnPHP.wordpress.com -->
+
+//codigo innecesario
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>:: Importar de Excel a la Base de Datos ::</title>

@@ -1,6 +1,11 @@
-<?php 
-$titulo="Importar Contratos de Obra desde archivo excel"; 
-require 'importar.head';
+<?php
+require '../librerias/sesion.php';
+$nivelAcceso = manejadorSesion::USUARIO_ADMIN;
+$sesion = new manejadorSesion;
+
+if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad por privilegios
+    header("Location: ../index.php");
+}
 ?>
 
 <!-- FORMULARIO PARA SOICITAR LA CARGA DEL EXCEL -->
@@ -34,8 +39,8 @@ if ($action == "upload"){
 ////////////////////////////////////////////////////////
 if (file_exists ("bak_".$archivo)){ 
 /** Clases necesarias */
-require_once('Classes/PHPExcel.php');
-require_once('Classes/PHPExcel/Reader/Excel2007.php');
+require_once('../librerias/PHPExcel.php');
+require_once('../librerias/PHPExcel/Reader/Excel2007.php');
 
 // Cargando la hoja de cÃ¡lculo
 $objReader = new PHPExcel_Reader_Excel2007();
@@ -177,5 +182,5 @@ if ($errores == 0){
 unlink($destino);
 }
 
-require 'importar.foot';
+
 ?>
