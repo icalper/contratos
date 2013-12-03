@@ -11,6 +11,7 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
 ?>
 <?php
 $campos = array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'cambioSup', 'supCivil', 'supMecanica', 'supPlantas', 'supElectrica', 'supInstrumentos', 'multianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'saldo2013', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+$campos_supervisor = array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'cambioSup', 'supCivil', 'supMecanica', 'supPlantas', 'supElectrica', 'supInstrumentos', 'multianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'saldo2013', 'estado', 'observaciones');
 $nombres_campos = array('Especialidad', 'Descripcion', 'Tipo de contrato', 'Compania', 'Supervisor', 'Cambio de Supervisor',
     'Supervisor Fase Civil', 'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Electrica', 'Supervisor Fase Instrumentos', 'Multianualidad',
     'Fecha De Inicio', 'Fecha de Termino', 'Plazo De Ejecucion', 'Monto Contratado Multianual', 'Monto Contratado', 'Convenio Mondificatorio Plazo Prorroga',
@@ -146,7 +147,7 @@ foreach ($campos as $id => $valor) {
                 <div id="logo">
                     <div id="logo_text">
                         <!-- class="logo_colour", allows you to change the colour of the text -->
-                        <h1><a href="../../index.html">Gestion <span class="logo_colour">de contratos</span></a></h1>
+                        <h1><a href="../../index.php">Gestion <span class="logo_colour">de contratos</span></a></h1>
                         <h2>PEMEX</h2>
                     </div>
                 </div>
@@ -165,7 +166,14 @@ foreach ($campos as $id => $valor) {
                         <table style="border-width: 0" class="display">
                             <?php
                             echo ("<tr>");
-                            foreach ($campos as $id => $valor) {
+                            
+                            if ( $sesion->getPrivilegios() == manejadorSesion::USUARIO_SUPERVISOR){
+                                $campos_checkbox = $campos_supervisor;
+                            }else{
+                                $campos_checkbox = $campos;
+                            }
+                            
+                            foreach ($campos_checkbox as $id => $valor) {
                                 if ($id % 5 == 0) {
                                     echo ("</tr><tr>");
                                 }

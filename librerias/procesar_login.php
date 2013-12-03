@@ -19,12 +19,14 @@ if ($registro != FALSE) { //Si se encontro el usuario
         $nombreUsuario = $registro['nomUsuario'];
         $privilegios = $registro['tipoUsuario'];
         $listaContratos = 0;
+        $tipoContratos = 0;
         
         if($privilegios == manejadorSesion::USUARIO_SUPERVISOR){
-            $listaContratos=listaContratos($idUsuario);            
+            $listaContratos = listaContratos($idUsuario);
+            $tipoContratos = tipoContratos($idUsuario);
         }
-        
-        $sesion->registrar($nombreUsuario, $privilegios, $listaContratos);
+               
+        $sesion->registrar($nombreUsuario, $privilegios, $listaContratos, $tipoContratos);
         header("Location: ../index.php");
     } else {
         header("Location: ../login.php?error=password"); // Si las contraseñas no coinciden
@@ -43,5 +45,17 @@ function listaContratos($idUsuario) {
     }
     
     return $listaContratos;
+}
+
+function tipoContratos($idUsuario) {
+    $tipoContratos = array();
+    $sql="SELECT DISTINCT contrato.tipo FROM contratos.contrato JOIN contratos.asignacion ON contrato.idContrato = asignacion.idContrato WHERE asignacion.idUsuario=$idUsuario";
+    $result = mysql_query($sql);
+    
+    while($contrato = mysql_fetch_row($result)){
+        array_push($tipoContratos, $contrato[0]);
+    }
+    
+    return $tipoContratos;
 }
 ?>
