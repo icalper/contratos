@@ -5,6 +5,7 @@ class manejadorSesion {
 
     var $nombreUsuario;
     var $privilegios;
+    var $listaContratos;
     const USUARIO_DESCONOCIDO=-1;
     const USUARIO_CREADOR = 1;
     const USUARIO_SUPERVISOR=2;
@@ -16,15 +17,17 @@ class manejadorSesion {
         if (is_array($datos)) {
             $this->nombreUsuario = $datos[0];
             $this->privilegios = $datos[1];
+            $this->listaContratos = $datos[2];
         } else {
             $this->privilegios = manejadorSesion::USUARIO_DESCONOCIDO;
         }
     }
 
-    function registrar($nombreUsuario, $privilegios) {
-        $_SESSION['sesion'] = array($nombreUsuario, $privilegios);
+    function registrar($nombreUsuario, $privilegios, $listaContratos) {
+        $_SESSION['sesion'] = array($nombreUsuario, $privilegios, $listaContratos);
         $this->nombreUsuario = $nombreUsuario;
         $this->privilegios = $privilegios;
+        $this->listaContratos = $listaContratos;
     }
     
     function terminar() {
@@ -35,6 +38,10 @@ class manejadorSesion {
 
     function getNombreUsuario() {
         return $this->nombreUsuario;
+    }
+    
+    function getListaContratos() {
+        return $this->listaContratos;
     }
 
     function getPrivilegios() {

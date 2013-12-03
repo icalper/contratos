@@ -1,7 +1,8 @@
-//inicio de usuario
 <?php
+//inicio de usuario
 require '../../librerias/sesion.php';
-$nivelAcceso = manejadorSesion::USUARIO_ADMIN;
+$nivelAcceso = manejadorSesion::USUARIO_SUPERVISOR;
+//$nivelAcceso = manejadorSesion::USUARIO_ADMIN;
 $sesion = new manejadorSesion;
 
 if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad por privilegios
