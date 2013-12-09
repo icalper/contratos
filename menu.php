@@ -16,7 +16,7 @@
     
    <?php }?>
     <?php if($sesion->getPrivilegios() >= manejadorSesion::USUARIO_ADMIN) { ?>
-    <li><a href="<?php echo $menuNivel; ?>usuario.php">Importar</a>
+    <li><a href="#">Importar</a>
         <ul>
             <li><a href="<?php echo $menuNivel; ?>importar/importar_cs.php">Contrato de Servicio</a></li>
             <li><a href="<?php echo $menuNivel; ?>importar/importar_co.php">Contrato de Obra</a></li>
@@ -26,7 +26,7 @@
     </li>
     <?php }?>
     <?php if($sesion->getPrivilegios() == manejadorSesion::USUARIO_SUPERADMIN) { ?>
-    <li><a href="#">Usuarios</a></li>
+    <li><a href="<?php echo $menuNivel; ?>usuario.php">Usuarios</a></li>
     <?php }?>
 </ul>
 <ul class="sf-menu" id="nav2">
