@@ -53,7 +53,7 @@ function tipoContratos($idUsuario) {
     $result = mysql_query($sql);
     
     while($contrato = mysql_fetch_row($result)){
-        array_push($tipoContratos, $contrato[0]);
+        array_push($tipoContratos, strtolower($contrato[0]));
     }
     
     return $tipoContratos;
