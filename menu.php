@@ -16,7 +16,7 @@
     
    <?php }?>
     <?php if($sesion->getPrivilegios() >= manejadorSesion::USUARIO_ADMIN) { ?>
-    <li><a href="#">Importar</a>
+    <li><a href="<?php echo $menuNivel; ?>usuario.php">Importar</a>
         <ul>
             <li><a href="<?php echo $menuNivel; ?>importar/importar_cs.php">Contrato de Servicio</a></li>
             <li><a href="<?php echo $menuNivel; ?>importar/importar_co.php">Contrato de Obra</a></li>

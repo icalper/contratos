@@ -8,7 +8,7 @@ $tipo = filter_input(INPUT_GET, "a");
 $accion = filter_input(INPUT_POST, "accion");
 include './librerias/usuario_funciones.php';
 if ($sesion->getPrivilegios() < $nivelAcceso) {
-    //header("Location: index.php");
+    header("Location: index.php");
 }
 ?>
 <html>
