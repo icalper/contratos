@@ -1,17 +1,20 @@
 <ul class="sf-menu" id="nav">
     <li class="selected"><a href="<?php echo $menuNivel; ?>index.php">Inicio</a></li>
+    <?php if($sesion->getPrivilegios() >= manejadorSesion::USUARIO_SUPERVISOR) { ?>
     <li><a href="#">Consulta</a>
         <ul><?php $tipoContratos = $sesion->getTipoContratos() ?>
             <?php if ($tipoContratos == 0 || in_array("cs", $tipoContratos)) {?>
             <li><a href="<?php echo $menuNivel; ?>consulta/cs/">Contrato de Servicio</a></li><?php } ?>
             <?php if ($tipoContratos == 0 || in_array("co", $tipoContratos)) {?>
             <li><a href="<?php echo $menuNivel; ?>consulta/co/">Contrato de Obra</a></li><?php } ?>
-            <?php if ($tipoContratos == 0 || in_array("CcI", $tipoContratos)) {?>
+            <?php if ($tipoContratos == 0 || in_array("cci", $tipoContratos)) {?>
             <li><a href="<?php echo $menuNivel; ?>consulta/cci/">Contrato de Compra con Instalacion</a></li><?php } ?>
             <?php if ($tipoContratos == 0 || in_array("aa", $tipoContratos)) {?>
             <li><a href="<?php echo $menuNivel; ?>consulta/aa/">Acuerdos Administrativos</a></li><?php } ?>
         </ul>
     </li>
+    
+   <?php }?>
     <?php if($sesion->getPrivilegios() >= manejadorSesion::USUARIO_ADMIN) { ?>
     <li><a href="#">Importar</a>
         <ul>

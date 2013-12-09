@@ -1,6 +1,8 @@
 <?php
+//inicio de usuario
 require '../../librerias/sesion.php';
-$nivelAcceso = manejadorSesion::USUARIO_ADMIN;
+$nivelAcceso = manejadorSesion::USUARIO_SUPERVISOR;
+//$nivelAcceso = manejadorSesion::USUARIO_ADMIN;
 $sesion = new manejadorSesion;
 
 if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad por privilegios
@@ -9,7 +11,7 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
 ?>
         <?php
         $campos = array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
-      
+        $campos_supervisor= array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
         $nombres_campos = array('Especialidad', 'Descripcion', 'Tipo de contrato', 'Compania', 'Residente', 'Supervisor Fase Civil', 
             'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Eelectrica', 'Supervisor Fase Instrumentos', 'Plurianualidad', 
             'Fecha De Inicio', 'Fecha de Termino', 'Plazo De Ejecucion', 'Monto Contratado Multianual', 'Monto Contratado', 'Convenio Mondificatorio Plazo Prorroga', 
@@ -165,7 +167,14 @@ foreach ($campos as $id => $valor) {
                         <table style="border-width: 0" class="display">
                             <?php
                             echo ("<tr>");
-                            foreach ($campos as $id => $valor) {
+                                    
+                            if ( $sesion->getPrivilegios() == manejadorSesion::USUARIO_SUPERVISOR){
+                                $campos_checkbox = $campos_supervisor;
+                            }else{
+                                $campos_checkbox = $campos;
+                            }
+                            
+                            foreach ($campos_checkbox as $id => $valor) {
                                 if ($id % 5 == 0) {
                                     echo ("</tr><tr>");
                                 }

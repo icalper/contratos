@@ -1,4 +1,13 @@
 <?php
+        require '../../librerias/sesion.php';
+        
+        $sesion = new manejadorSesion();
+        
+        if(is_array($listaContratos = $sesion->getListaContratos())){
+            $whereFiltro = " numContrato IN ('".implode("', '", $listaContratos)."') ";
+        }  else {
+            $whereFiltro = " TRUE ";
+        }
         //session_start();
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Easy set variables
@@ -96,10 +105,10 @@
 	 * word by word on any field. It's possible to do here, but concerned about efficiency
 	 * on very large tables, and MySQL's regex functionality is very limited
 	 */
-	$sWhere = "";
+	$sWhere = "WHERE $whereFiltro";
 	if ( isset($_GET['sSearch']) && $_GET['sSearch'] != "" )
 	{
-		$sWhere = "WHERE (";
+		$sWhere .= " AND (";
 		for ( $i=0 ; $i<count($aColumns) ; $i++ )
 		{
 			if ( isset($_GET['bSearchable_'.$i]) && $_GET['bSearchable_'.$i] == "true" )
