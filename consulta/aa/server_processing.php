@@ -1,4 +1,13 @@
 <?php
+        require '../../librerias/sesion.php';
+        
+        $sesion = new manejadorSesion();
+        
+        if(is_array($listaContratos = $sesion->getListaContratos())){
+            $whereFiltro = " numContrato IN ('".implode("', '", $listaContratos)."') ";
+        }  else {
+            $whereFiltro = " TRUE ";
+        }
         //session_start();
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Easy set variables
@@ -7,7 +16,7 @@
 	/* Array of database columns which should be read and sent back to DataTables. Use a space where
 	 * you want to insert a non-database field (for example a counter or static image)
 	 */
-	$aColumns = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'faseUssipa', 'inicio', 'termino');
+	$aColumns = array('numAcuerdo', 'numContrato', 'especialidad', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'faseUssipa', 'inicio', 'termino');
 	
         //$aColumns=$_SESSION[$campos];
         
@@ -22,7 +31,6 @@
 	$gaSql['password']   = "123";
 	$gaSql['db']         = "contratos";
 	$gaSql['server']     = "localhost";
-	
 	/* REMOVE THIS LINE (it just includes my SQL connection user/pass) */
 	//include( $_SERVER['DOCUMENT_ROOT']."/datatables/mysql.php" );
 	
@@ -96,10 +104,10 @@
 	 * word by word on any field. It's possible to do here, but concerned about efficiency
 	 * on very large tables, and MySQL's regex functionality is very limited
 	 */
-	$sWhere = "";
+	$sWhere = "WHERE $whereFiltro";
 	if ( isset($_GET['sSearch']) && $_GET['sSearch'] != "" )
 	{
-		$sWhere = "WHERE (";
+		$sWhere .= " AND (";
 		for ( $i=0 ; $i<count($aColumns) ; $i++ )
 		{
 			if ( isset($_GET['bSearchable_'.$i]) && $_GET['bSearchable_'.$i] == "true" )
@@ -112,21 +120,21 @@
 	}
 	
 	/* Individual column filtering */
-	for ( $i=0 ; $i<count($aColumns) ; $i++ )
-	{
-		if ( isset($_GET['bSearchable_'.$i]) && $_GET['bSearchable_'.$i] == "true" && $_GET['sSearch_'.$i] != '' )
-		{
-			if ( $sWhere == "" )
-			{
-				$sWhere = "WHERE ";
-			}
-			else
-			{
-				$sWhere .= " AND ";
-			}
-			$sWhere .= "`".$aColumns[$i]."` LIKE '%".mysql_real_escape_string($_GET['sSearch_'.$i])."%' ";
-		}
-	}
+//	for ( $i=0 ; $i<count($aColumns) ; $i++ )
+//	{
+//		if ( isset($_GET['bSearchable_'.$i]) && $_GET['bSearchable_'.$i] == "true" && $_GET['sSearch_'.$i] != '' )
+//		{
+//			if ( $sWhere == "" )
+//			{
+//				$sWhere = "WHERE ";
+//			}
+//			else
+//			{
+//				$sWhere .= " AND ";
+//			}
+//			$sWhere .= "`".$aColumns[$i]."` LIKE '%".mysql_real_escape_string($_GET['sSearch_'.$i])."%' ";
+//		}
+//	}
 	
 	
 	/*
@@ -160,7 +168,8 @@
 	$iTotal = $aResultTotal[0];
 	
 	
-	/*
+/*
+ * se agrego una nueva funcion 04 11 2013
 	 * Output
 	 */
 	$output = array(
@@ -170,9 +179,16 @@
 		"aaData" => array()
 	);
 	
+        $count=0;
+        
 	while ( $aRow = mysql_fetch_array( $rResult ) )
 	{
 		$row = array();
+		
+		// Add the row ID and class to the object
+		$row['DT_RowId'] = 'row_'.$aRow['numServicio'];
+		//$row['DT_RowClass'] = $aColumns[$i];
+		
 		for ( $i=0 ; $i<count($aColumns) ; $i++ )
 		{
 			if ( $aColumns[$i] == "version" )
@@ -186,9 +202,9 @@
 				$row[] = $aRow[ $aColumns[$i] ];
 			}
 		}
+                $count++;
 		$output['aaData'][] = $row;
 	}
 	
 	echo json_encode( $output );
-        
 ?>

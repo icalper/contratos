@@ -19,7 +19,6 @@ $registros_filtrados = array_filter($registros_consulta);
 $campos_filtrados = array_filter($campos_consulta);
 
 
-
 /**
  * PHPExcel
  *
@@ -47,7 +46,7 @@ $campos_filtrados = array_filter($campos_consulta);
  */
 //error_reporting(-1);
 date_default_timezone_set('America/Santiago');
-require_once "../PHPExcel.php";
+require_once "../../librerias/PHPExcel.php";
 
 //VARIABLES DE PHP
 $objPHPExcel = new PHPExcel();

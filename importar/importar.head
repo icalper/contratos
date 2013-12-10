@@ -40,7 +40,7 @@
                   <li><a href="importar_acuerdos.php">Acuerdos Administrativos</a></li>
               </ul>
           </li>
-          <li><a href="#">Acerca de...</a></li>
+          <li><a href="#"></a></li>
         </ul>
       </nav>
     </header>
