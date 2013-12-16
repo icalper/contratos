@@ -24,6 +24,7 @@ switch ($accion) {
         $usuario = filter_input(INPUT_POST, "usuario");
         $nombre = filter_input(INPUT_POST, "nombre");
         $password = filter_input(INPUT_POST, "password");
+        $passwordMD5 = md5($password);
         $depto = filter_input(INPUT_POST, "depto");
         $privilegios = filter_input(INPUT_POST, "privilegios");
         if($password == ""){
@@ -38,7 +39,7 @@ switch ($accion) {
             SET
             `tipoUsuario` = '$privilegios',
             `depUsuario` = '$depto',
-            `contraseña` = '$password',
+            `contraseña` = '$passwordMD5',
             `nomPersonaUsuario` = '$nombre'
             WHERE `idUsuario` = $idusuario;";
         }
