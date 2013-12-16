@@ -26,7 +26,11 @@
     </li>
     <?php }?>
     <?php if($sesion->getPrivilegios() == manejadorSesion::USUARIO_SUPERADMIN) { ?>
-    <li><a href="<?php echo $menuNivel; ?>usuario.php">Usuarios</a></li>
+    <li><a href="#">Usuarios</a>
+    <ul>
+        <li><a href="<?php echo $menuNivel; ?>usuario.php?f=a">Agregar usuario</a></li>
+        <li><a href="<?php echo $menuNivel; ?>usuario.php">Lista de usuarios</a></li>
+    </ul></li>
     <?php }?>
 </ul>
 <ul class="sf-menu" id="nav2">
