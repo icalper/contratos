@@ -40,13 +40,16 @@
             <?php
         } else {
 
-            $texto = "Usuario: " . $sesion->getNombreUsuario();
+            $texto = "Usuario: " . $sesion->getNombreUsuario()[0];
             $link = "#";
             $link_logout = $menuNivel . "logout.php";
             ?>
             <a href="<?php echo $link; ?>"><?php echo $texto; ?></a>
             <?php
-            echo "<ul><li><a href=\"$link_logout\">Cerrar sesión</a></li></ul>";
+            echo "<ul>";
+//            echo "<li><a href=\"#\">".$sesion->getNombreUsuario()[1]."</a></li>";
+            echo "<li><a href=\"$link_logout\">Cerrar sesión</a>";
+            echo "</li></ul>";
         }
         ?>
     </li>

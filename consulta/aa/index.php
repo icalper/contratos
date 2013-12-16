@@ -10,9 +10,9 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
 }
 ?>
 <?php
-$campos = array('especialidad', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'faseUssipa', 'inicio', 'termino');
-$campos_supervisor = array('especialidad', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'faseUssipa', 'inicio', 'termino');
-$nombres_campos = array('Especialidad', 'Numero de Contrato', 'Descripcion', 'Tipo de Contrato', 'Residente', 'Supervisor Fase Plantas', 'Supervisor Fase Electrico', 'Supervisor Fase Mecanica', 'Supervisor Fase Civil', 'Supervisor Fase Instrumentos', 'Fase USSIPA', 'Fecha de Inicio', 'Fecha de Termino');
+$campos = array('especialidad', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'supUasipa', 'proyecto', 'inicio', 'termino');
+$campos_supervisor = array('especialidad', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'supUasipa', 'proyecto', 'inicio', 'termino');
+$nombres_campos = array('Especialidad', 'Descripcion', 'Tipo de Contrato', 'Residente', 'Supervisor Fase Plantas', 'Supervisor Fase Electrico', 'Supervisor Fase Mecanica', 'Supervisor Fase Civil', 'Supervisor Fase Instrumentos', 'Supervisor UASIPA', 'Proyecto', 'Fecha de Inicio', 'Fecha de Termino');
 $ancho_campos = array('100px', '160px', '250px', '200px', '200px', '200px', '200px', '200px', '200px', '100px', '100px', '100px', '200px');
 
 $campos_consulta = array();
@@ -49,7 +49,7 @@ $campos_filtrados = array_filter($campos_consulta);
 
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function() {
-                $('ul.sf-menu').sooperfish();
+                //$('ul.sf-menu').sooperfish();
                 $('#excel').click(function() {
                     var sTabla = oTable.$('input').serialize();
                     var sCampos = $('#campos').serialize();
@@ -66,7 +66,7 @@ $campos_filtrados = array_filter($campos_consulta);
                     "bLengthChange": false,
                     "bProcessing": true,
                     "bServerSide": true,
-                    "bStateSave": true,
+                    "bStateSave": false,
                     "bPaginate": false,
                     //"sPaginationType": "full_numbers",
                     "sAjaxSource": "server_processing.php",
@@ -90,7 +90,8 @@ $campos_filtrados = array_filter($campos_consulta);
                             },
                             "height": "25px"
                         });
-                    },
+                    }
+                    ,
                     "aoColumns": [
                         {"bSearchable": false, "bVisible": false},
                         {"sClass": "readonly", "mRender": function(data, type, full) {
@@ -115,9 +116,8 @@ foreach ($campos as $id => $valor) {
         }
     }
 }
-?>
-                    ]
-                });
+?>]
+            }); });
 
 
 //                Este codigo es util para añadir un evento al hacer click en un elemento
@@ -130,7 +130,7 @@ foreach ($campos as $id => $valor) {
 //                alert( sId )
 //            } );
 
-            });
+            
         </script>
 
     </head>
@@ -196,7 +196,7 @@ foreach ($campos as $id => $valor) {
                                             echo "<th width=\"600px\">$nombres_campos[$id]</th>";
                                         else
                                         //echo "<th>".$nombres_campos[$id]."</th>"; 
-                                            echo "<th width=\"ancho_campos[$id]\">$nombres_campos[$id]</th>";
+                                            echo "<th width=\"$ancho_campos[$id]\">$nombres_campos[$id]</th>";
                                     }
                                     ?>
                                 </tr>

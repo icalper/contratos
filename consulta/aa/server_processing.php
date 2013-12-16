@@ -16,7 +16,7 @@
 	/* Array of database columns which should be read and sent back to DataTables. Use a space where
 	 * you want to insert a non-database field (for example a counter or static image)
 	 */
-	$aColumns = array('numAcuerdo', 'numContrato', 'especialidad', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'faseUssipa', 'inicio', 'termino');
+	$aColumns = array('numAcuerdo', 'numContrato', 'especialidad', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'supUasipa', 'proyecto', 'inicio', 'termino');
 	
         //$aColumns=$_SESSION[$campos];
         
@@ -186,7 +186,7 @@
 		$row = array();
 		
 		// Add the row ID and class to the object
-		$row['DT_RowId'] = 'row_'.$aRow['numServicio'];
+		$row['DT_RowId'] = 'row_'.$aRow['numAcuerdo'];
 		//$row['DT_RowClass'] = $aColumns[$i];
 		
 		for ( $i=0 ; $i<count($aColumns) ; $i++ )

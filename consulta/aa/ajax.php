@@ -1,5 +1,5 @@
 <?php
-$aColumns = array('numAcuerdo', 'numContrato', 'especialidad', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'faseUssipa', 'inicio', 'termino');
+$aColumns = array('numAcuerdo', 'numContrato', 'especialidad', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'supUasipa', 'proyecto', 'inicio', 'termino');
 $cn = mysql_connect ("localhost","root","123") or die ("ERROR EN LA CONEXION");
 $db = mysql_select_db ("contratos",$cn) or die ("ERROR AL CONECTAR A LA BD");
 

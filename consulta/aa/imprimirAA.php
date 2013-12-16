@@ -1,7 +1,7 @@
 <?php
 
-$campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'faseUssipa', 'inicio', 'termino');
-$nombres_campos = array('Especialidad', 'Numero de Contrato', 'Descripcion', 'Tipo de Contrato', 'Residente', 'Supervisor Fase Plantas', 'Supervisor Fase Electrico', 'Supervisor Fase Mecanica', 'Supervisor Fase Civil', 'Supervisor Fase Instrumentos', 'Fase USSIPA', 'Fecha de Inicio', 'Fecha de Termino');
+$campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'residente', 'supPlantas', 'supElectrico', 'supMecanica', 'supCivil', 'supInstrumento', 'supUasipa', 'proyecto', 'inicio', 'termino');
+$nombres_campos = array('Especialidad', 'Numero de Contrato', 'Descripcion', 'Tipo de Contrato', 'Residente', 'Supervisor Fase Plantas', 'Supervisor Fase Electrico', 'Supervisor Fase Mecanica', 'Supervisor Fase Civil', 'Supervisor Fase Instrumentos', 'Supervisor UASIPA', 'Proyecto', 'Fecha de Inicio', 'Fecha de Termino');
 
 
 $registros_consulta = array();
@@ -49,7 +49,7 @@ date_default_timezone_set('America/Santiago');
 require_once "../../librerias/PHPExcel.php";
 
 //VARIABLES DE PHP
-$objPHPExcel = new PHPExcel();
+$objPHPExcel = PHPExcel_IOFactory::load("acuerdos_administrativos.xlsx");
 $Archivo = "Reporte De Acuerdos Administrativos " . date("Y-m-d h:m:s");
 
 
@@ -83,11 +83,11 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(50);
 
 
-for ($i = 4; $i < 40; $i++) {
+for ($i = 4; $i < 20; $i++) {
     $objPHPExcel->getActiveSheet()->getColumnDimensionByColumn($i)->setAutoSize(true);
 }
 
-$objPHPExcel->getActiveSheet()->getStyle('A1:AN200')
+$objPHPExcel->getActiveSheet()->getStyle('A1:N200')
         ->getAlignment()->setWrapText(true);
 
 //CABECERA DE LA CONSULTA
@@ -104,7 +104,7 @@ foreach ($campos as $key => $valor) {
 }
 
 $objPHPExcel->getActiveSheet()
-        ->getStyle('A5:M5')
+        ->getStyle('A5:N5')
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
         ->getStartColor()->setARGB('B48F6A');
@@ -144,7 +144,7 @@ while ($row = mysql_fetch_array($rec)) {
     $y++;
     //BORDE DE LA CELDA
     $objPHPExcel->setActiveSheetIndex(0)
-            ->getStyle('A' . $y . ":M" . $y)
+            ->getStyle('A' . $y . ":N" . $y)
             ->applyFromArray($borders);
 
     //MOSTRAMOS LOS VALORES

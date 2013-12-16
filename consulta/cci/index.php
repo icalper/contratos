@@ -68,7 +68,7 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
                     "bLengthChange": false,
                     "bProcessing": true,
                     "bServerSide": true,
-                    "bStateSave": true,
+                    "bStateSave": false,
                     "bPaginate": false,
                     //"sPaginationType": "full_numbers",
                     "sAjaxSource": "server_processing.php",
@@ -198,7 +198,7 @@ foreach ($campos as $id => $valor) {
                                             echo "<th width=\"600px\">$nombres_campos[$id]</th>";
                                         else
                                         //echo "<th>".$nombres_campos[$id]."</th>"; 
-                                            echo "<th width=\"ancho_campos[$id]\">$nombres_campos[$id]</th>";
+                                            echo "<th width=\"$ancho_campos[$id]\">$nombres_campos[$id]</th>";
                                     }
                                     ?>
                                 </tr>

@@ -187,7 +187,7 @@
 		$row = array();
 		
 		// Add the row ID and class to the object
-		$row['DT_RowId'] = 'row_'.$aRow['numServicio'];
+		$row['DT_RowId'] = 'row_'.$aRow['numCompra'];
 		//$row['DT_RowClass'] = $aColumns[$i];
 		
 		for ( $i=0 ; $i<count($aColumns) ; $i++ )

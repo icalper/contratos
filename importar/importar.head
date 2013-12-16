@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <html>
 
@@ -38,9 +39,14 @@
                   <li><a href="importar_co.php">Contrato de Obra</a></li>
                   <li><a href="importar_compras_inst.php">Contrato de Compra con Instalacion</a></li>
                   <li><a href="importar_acuerdos.php">Acuerdos Administrativos</a></li>
+                  
               </ul>
+              
           </li>
-          <li><a href="#"></a></li>
+          
+          <li><a href="#"></a>
+          
+          </li>
         </ul>
       </nav>
     </header>
