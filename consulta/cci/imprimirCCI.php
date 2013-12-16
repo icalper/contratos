@@ -19,7 +19,6 @@ $registros_filtrados = array_filter($registros_consulta);
 $campos_filtrados = array_filter($campos_consulta);
 
 
-
 /**
  * PHPExcel
  *
@@ -47,10 +46,10 @@ $campos_filtrados = array_filter($campos_consulta);
  */
 //error_reporting(-1);
 date_default_timezone_set('America/Santiago');
-require_once "../PHPExcel.php";
+require_once "../../librerias/PHPExcel.php";
 
 //VARIABLES DE PHP
-$objPHPExcel = new PHPExcel();
+$objPHPExcel = PHPExcel_IOFactory::load("contrato_de_compra_instalacion.xlsx");
 $Archivo = "Reporte De Compras Con Instalacion" . date("Y-m-d h:m:s");
 
 
@@ -84,11 +83,11 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(50);
 
 
-for ($i = 4; $i < 40; $i++) {
+for ($i = 4; $i < 20; $i++) {
     $objPHPExcel->getActiveSheet()->getColumnDimensionByColumn($i)->setAutoSize(true);
 }
 
-$objPHPExcel->getActiveSheet()->getStyle('A1:AN200')
+$objPHPExcel->getActiveSheet()->getStyle('A1:I200')
         ->getAlignment()->setWrapText(true);
 
 //CABECERA DE LA CONSULTA
@@ -105,7 +104,7 @@ foreach ($campos as $key => $valor) {
 }
 
 $objPHPExcel->getActiveSheet()
-        ->getStyle('A5:AI5')
+        ->getStyle('A5:I5')
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
         ->getStartColor()->setARGB('B48F6A');
@@ -120,7 +119,7 @@ $borders = array(
 );
 
 $objPHPExcel->getActiveSheet()
-        ->getStyle('A5:AI5')
+        ->getStyle('A5:I5')
         ->applyFromArray($borders);
 
 
@@ -145,7 +144,7 @@ while ($row = mysql_fetch_array($rec)) {
     $y++;
     //BORDE DE LA CELDA
     $objPHPExcel->setActiveSheetIndex(0)
-            ->getStyle('A' . $y . ":AI" . $y)
+            ->getStyle('A' . $y . ":I" . $y)
             ->applyFromArray($borders);
 
     //MOSTRAMOS LOS VALORES

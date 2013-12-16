@@ -73,7 +73,7 @@ $campos_filtrados = array_filter($campos_consulta);
                     "bLengthChange": false,
                     "bProcessing": true,
                     "bServerSide": true,
-                    "bStateSave": true,
+                    "bStateSave": false,
                     "bPaginate": false,
                     //"sPaginationType": "full_numbers",
                     "sAjaxSource": "server_processing.php",
@@ -97,12 +97,14 @@ $campos_filtrados = array_filter($campos_consulta);
                             },
                             "height": "25px"
                         });
-                    },
+                    }
+                    ,
                     "aoColumns": [
                         {"bSearchable": false, "bVisible": false},
                         {"sClass": "readonly", "mRender": function(data, type, full) {
                                 return '<input type="checkbox" name="' + full.DT_RowId + '" value="' + data + '"> ' + data;
-                            }},
+                            }}
+                            ,
 <?php
 $primero = true;
 foreach ($campos as $id => $valor) {
@@ -122,8 +124,7 @@ foreach ($campos as $id => $valor) {
         }
     }
 }
-?>
-                    ]
+?>]
                 });
 
 
@@ -203,7 +204,7 @@ foreach ($campos as $id => $valor) {
                                             echo "<th width=\"600px\">$nombres_campos[$id]</th>";
                                         else
                                         //echo "<th>".$nombres_campos[$id]."</th>"; 
-                                            echo "<th width=\"ancho_campos[$id]\">$nombres_campos[$id]</th>";
+                                            echo "<th width=\"$ancho_campos[$id]\">$nombres_campos[$id]</th>";
                                     }
                                     ?>
                                 </tr>

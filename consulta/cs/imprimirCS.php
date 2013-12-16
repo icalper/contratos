@@ -54,7 +54,8 @@ date_default_timezone_set('America/Santiago');
 require_once "../../librerias/PHPExcel.php";
 
 //VARIABLES DE PHP
-$objPHPExcel = new PHPExcel();
+//$objPHPExcel = new PHPExcel(); 
+$objPHPExcel = PHPExcel_IOFactory::load("contrato_de_servicio.xlsx");
 $Archivo = "Reporte De Contratos De Servicio " . date("Y-m-d h:m:s");
 
 

@@ -15,6 +15,7 @@ require 'importar.head';
 <!-- FORMULARIO PARA SOICITAR LA CARGA DEL EXCEL -->
 <h1><?php echo $titulo; ?></h1>
 <p>Para importar, seleccione el archivo y a continuación presione el botón "Importar"</p>
+<h3>Importar unicamente los formatos prediseñados para Contratos de Servicio</h3>
 <h3>Selecciona el archivo a importar:</h3>
 <form id="contact" name="importa" method="post" action="<?php echo $PHP_SELF; ?>" enctype="multipart/form-data" >
 <div class="form_settings">
