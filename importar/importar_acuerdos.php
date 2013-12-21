@@ -7,24 +7,24 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
     header("Location: ../index.php");
 }
 ?>
+
 <?php 
-$titulo="Importar Contratos de Obra desde archivo excel"; 
+$titulo="Importar Acuerdos Administrativos desde archivo excel"; 
 require 'importar.head';
 ?>
 <!-- FORMULARIO PARA SOICITAR LA CARGA DEL EXCEL -->
-
 <h1><?php echo $titulo; ?></h1>
 <p>Para importar, seleccione el archivo y a continuación presione el botón "Importar"</p>
-<h3>Importar unicamente los formatos prediseñados para los contratos de Acuerdos Administrativos</h3>
+<h3>Importar unicamente los formatos prediseñados para Acuerdos Administrativos</h3>
 <h3>Selecciona el archivo a importar:</h3>
-
 <form id="contact" name="importa" method="post" action="<?php echo $PHP_SELF; ?>" enctype="multipart/form-data" >
-    <div class="form_settings">
-<input class="contact" type="file" name="excel" />
+<div class="form_settings">
+    <input class="contact" type="file" name="excel" />
 <input class="submit" type='submit' name='enviar'  value="Importar"  />
 <input type="hidden" value="upload" name="action" />
-    </div>
+</div>
 </form>
+<!-- CARGA LA MISMA PAGINA MANDANDO LA VARIABLE upload -->
 
 <?php 
 //error_reporting(E_ALL ^ E_NOTICE);
@@ -50,7 +50,7 @@ require_once('../librerias/PHPExcel/Reader/Excel2007.php');
 // Cargando la hoja de cÃ¡lculo
 $objReader = new PHPExcel_Reader_Excel2007();
 $objPHPExcel = $objReader->load("bak_".$archivo);
-$objFecha = new PHPExcel_Shared_Date();
+$objFecha = new PHPExcel_Shared_Date();       
 
 // Asignar hoja de excel activa
 $objPHPExcel->setActiveSheetIndex(0);
@@ -61,7 +61,7 @@ $cn = mysql_connect ("localhost","root","123") or die ("ERROR EN LA CONEXION");
 $db = mysql_select_db ("contratos",$cn) or die ("ERROR AL CONECTAR A LA BD");
 
         // Llenamos el arreglo con los datos  del archivo xlsx
-for ($i=4;$i<=100;$i++){
+for ($i=6;$i<=200;$i++){
 	$_DATOS_EXCEL[$i]['especialidad'] = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
 	$_DATOS_EXCEL[$i]['numContrato'] = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
 	
@@ -74,7 +74,7 @@ for ($i=4;$i<=100;$i++){
 	$_DATOS_EXCEL[$i]['supMecanica'] = $objPHPExcel->getActiveSheet()->getCell('H'.$i)->getCalculatedValue();
 	$_DATOS_EXCEL[$i]['supCivil'] = $objPHPExcel->getActiveSheet()->getCell('I'.$i)->getCalculatedValue();
         $_DATOS_EXCEL[$i]['supInstrumento'] = $objPHPExcel->getActiveSheet()->getCell('J'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['faseUssipa'] = $objPHPExcel->getActiveSheet()->getCell('K'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['supUasipa'] = $objPHPExcel->getActiveSheet()->getCell('K'.$i)->getCalculatedValue();
 	$_DATOS_EXCEL[$i]['proyecto'] = $objPHPExcel->getActiveSheet()->getCell('L'.$i)->getCalculatedValue();
 	
        //Convertimos los formatos de fecha para que sea legible para mysql
@@ -112,7 +112,7 @@ foreach($_DATOS_EXCEL as $filaNum => $filaContenido){
                 . "supMecanica = values (supMecanica),"
                 . "supCivil = values (supCivil),"
                 . "supInstrumento = values (supInstrumento),"
-                . "faseUssipa = values (faseUssipa),"
+                . "supUasipa = values (supUasipa),"
                 . "proyecto = values (proyecto),"
                 . "inicio = values (inicio),"
                 . "termino = values (termino);";
@@ -122,6 +122,7 @@ foreach($_DATOS_EXCEL as $filaNum => $filaContenido){
 //	if (!$result){ echo "Error al insertar registro ".$filaNum;$errores+=1;
 //      echo mysql_error();
 //      echo $sql;
+//      die();
 //        }
 }	
 /////////////////////////////////////////////////////////////////////////

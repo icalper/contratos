@@ -10,16 +10,16 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
 }
 ?>
         <?php
-        $campos = array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
-        $campos_supervisor= array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+        $campos = array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicioContractual', 'terminoContractual', 'inicioReal', 'terminoReal', 'plazoEjecucion', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'reFisica', 'finiquito', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+        $campos_supervisor= array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicioContractual', 'terminoContractual', 'inicioReal', 'terminoReal', 'plazoEjecucion', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'reFisica', 'finiquito', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
         $nombres_campos = array('Especialidad', 'Descripcion', 'Tipo de contrato', 'Compania', 'Residente', 'Supervisor Fase Civil', 
-            'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Eelectrica', 'Supervisor Fase Instrumentos', 'Plurianualidad', 
-            'Fecha De Inicio', 'Fecha de Termino', 'Plazo De Ejecucion', 'Monto Contratado Multianual', 'Monto Contratado', 'Convenio Mondificatorio Plazo Prorroga', 
-            'Convenio Modificatorio Monto', 'Unidad De Inversion', 'Numero De Pedido SAP', 'Monto Pagado 2011 2012', 'Saldo 2011 2012', 'Estimado 2013 Pagado', 
-            'Estimado del Convenio', 'Saldo 2013', 'avanceFisico', 'avanceFinanciero', 'Estado Que Guarda', 'Observaciones', 'enero', 'febrero', 'marzo', 'abril', 
+            'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Electrica', 'Supervisor Fase Instrumentos', 'Plurianualidad', 
+            'Fecha De Inicio Contractual', 'Fecha de TerminoContractual', 'Fecha de Inicio Real', 'Fecha de Termino Real', 'Plazo De Ejecucion', 'Monto Contratado', 'Convenio Mondificatorio Plazo Prorroga', 
+            'Convenio Modificatorio Monto', 'Unidad De Inversion', 'Numero De Pedido SAP', 'Monto Pagado 2011 2012', 'Saldo 2011 2012', 'Estimado 2013', 
+            'Estimado del Convenio', 'Saldo 2013', 'avanceFisico', 'avanceFinanciero', 'Estado Que Guarda', 'Recepcion Fisica', 'Finiquito', 'Observaciones', 'enero', 'febrero', 'marzo', 'abril', 
             'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
         
-        $ancho_campos = array ('100px', '160px', '250px', '200px', '200px', '200px', '200px', '200px', '200px', '100px', '100px', '100px', '200px', 
+        $ancho_campos = array ('190px', '190px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '100px', '100px', '100px', '200px', 
             '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '300px', '100px', '100px', '100px', 
             '100px', '100px', '100px', '100px', '100px', '100px', '100px', '100px', '100px');
 
@@ -175,7 +175,7 @@ foreach ($campos as $id => $valor) {
                             }
                             
                             foreach ($campos_checkbox as $id => $valor) {
-                                if ($id % 5 == 0) {
+                                if ($id % 6 == 0) {
                                     echo ("</tr><tr>");
                                 }
                                 $checked = "";

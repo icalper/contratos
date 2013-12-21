@@ -61,7 +61,7 @@ $cn = mysql_connect ("localhost","root","123") or die ("ERROR EN LA CONEXION");
 $db = mysql_select_db ("contratos",$cn) or die ("ERROR AL CONECTAR A LA BD");
 
         // Llenamos el arreglo con los datos  del archivo xlsx
-for ($i=4;$i<=100;$i++){
+for ($i=6;$i<=200;$i++){
 	$_DATOS_EXCEL[$i]['especialidad'] = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
 	$_DATOS_EXCEL[$i]['numContrato'] = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
 	//se agrega mysql_real_escape_string() para evitar error por datos con ' y que finalize la consulta.
@@ -69,46 +69,46 @@ for ($i=4;$i<=100;$i++){
 	$_DATOS_EXCEL[$i]['tipoContrato']= $objPHPExcel->getActiveSheet()->getCell('D'.$i)->getCalculatedValue();
 	$_DATOS_EXCEL[$i]['compañia']= mysql_real_escape_string($objPHPExcel->getActiveSheet()->getCell('E'.$i)->getCalculatedValue());
 	$_DATOS_EXCEL[$i]['supervisor'] = $objPHPExcel->getActiveSheet()->getCell('F'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['cambioSup'] = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['supCivil'] = $objPHPExcel->getActiveSheet()->getCell('H'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['supMecanica'] = $objPHPExcel->getActiveSheet()->getCell('I'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['supPlantas'] = $objPHPExcel->getActiveSheet()->getCell('J'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['supElectrica'] = $objPHPExcel->getActiveSheet()->getCell('K'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['supInstrumentos'] = $objPHPExcel->getActiveSheet()->getCell('L'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['multianulidad'] = $objPHPExcel->getActiveSheet()->getCell('M'.$i)->getCalculatedValue();
+
+	$_DATOS_EXCEL[$i]['supCivil'] = $objPHPExcel->getActiveSheet()->getCell('G'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['supMecanica'] = $objPHPExcel->getActiveSheet()->getCell('H'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['supPlantas'] = $objPHPExcel->getActiveSheet()->getCell('I'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['supElectrica'] = $objPHPExcel->getActiveSheet()->getCell('J'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['supInstrumentos'] = $objPHPExcel->getActiveSheet()->getCell('K'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['multianulidad'] = $objPHPExcel->getActiveSheet()->getCell('L'.$i)->getCalculatedValue();
 	
         //Convertimos los formatos de fecha para que sea legible para mysql
-        $fechaInicio= $objFecha->ExcelToPHP($objPHPExcel->getActiveSheet()->getCell('N'.$i)->getCalculatedValue());
-        $fechaTermino= $objFecha->ExcelToPHP($objPHPExcel->getActiveSheet()->getCell('O'.$i)->getCalculatedValue());
+        $fechaInicio= $objFecha->ExcelToPHP($objPHPExcel->getActiveSheet()->getCell('M'.$i)->getCalculatedValue());
+        $fechaTermino= $objFecha->ExcelToPHP($objPHPExcel->getActiveSheet()->getCell('N'.$i)->getCalculatedValue());
         
 	$_DATOS_EXCEL[$i]['inicio'] = date("Y-m-d", $fechaInicio);
 	$_DATOS_EXCEL[$i]['termino'] = date("Y-m-d", $fechaTermino);
         
-	$_DATOS_EXCEL[$i]['plazoEjecucion'] = $objPHPExcel->getActiveSheet()->getCell('P'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['montoContratadoMult'] = $objPHPExcel->getActiveSheet()->getCell('Q'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['montoContratado'] = $objPHPExcel->getActiveSheet()->getCell('R'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['cmPlazoProrroga'] = $objPHPExcel->getActiveSheet()->getCell('S'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['cmMonto'] = $objPHPExcel->getActiveSheet()->getCell('T'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['unidadInversion'] = $objPHPExcel->getActiveSheet()->getCell('U'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['sap'] = $objPHPExcel->getActiveSheet()->getCell('V'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['pagado20112012'] = $objPHPExcel->getActiveSheet()->getCell('W'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['saldo20112012'] = $objPHPExcel->getActiveSheet()->getCell('X'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['estimado2013'] = $objPHPExcel->getActiveSheet()->getCell('Y'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['saldo2013'] = $objPHPExcel->getActiveSheet()->getCell('Z'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['estado'] = $objPHPExcel->getActiveSheet()->getCell('AA'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['observaciones'] = $objPHPExcel->getActiveSheet()->getCell('AB'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['enero'] = $objPHPExcel->getActiveSheet()->getCell('AC'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['febrero'] = $objPHPExcel->getActiveSheet()->getCell('AD'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['marzo'] = $objPHPExcel->getActiveSheet()->getCell('AE'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['abril'] = $objPHPExcel->getActiveSheet()->getCell('AF'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['mayo'] = $objPHPExcel->getActiveSheet()->getCell('AG'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['junio'] = $objPHPExcel->getActiveSheet()->getCell('AH'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['julio'] = $objPHPExcel->getActiveSheet()->getCell('AI'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['agosto'] = $objPHPExcel->getActiveSheet()->getCell('AJ'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['septiembre'] = $objPHPExcel->getActiveSheet()->getCell('AK'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['octubre'] = $objPHPExcel->getActiveSheet()->getCell('AL'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['noviembre'] = $objPHPExcel->getActiveSheet()->getCell('AM'.$i)->getCalculatedValue();
-	$_DATOS_EXCEL[$i]['diciembre'] = $objPHPExcel->getActiveSheet()->getCell('AN'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['plazoEjecucion'] = $objPHPExcel->getActiveSheet()->getCell('O'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['montoContratadoMin'] = $objPHPExcel->getActiveSheet()->getCell('P'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['montoContratadoMax'] = $objPHPExcel->getActiveSheet()->getCell('Q'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['cmPlazoProrroga'] = $objPHPExcel->getActiveSheet()->getCell('R'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['cmMonto'] = $objPHPExcel->getActiveSheet()->getCell('S'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['unidadInversion'] = $objPHPExcel->getActiveSheet()->getCell('T'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['sap'] = $objPHPExcel->getActiveSheet()->getCell('U'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['pagado20112012'] = $objPHPExcel->getActiveSheet()->getCell('V'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['saldo20112012'] = $objPHPExcel->getActiveSheet()->getCell('W'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['estimado2013'] = $objPHPExcel->getActiveSheet()->getCell('X'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['saldo2013'] = $objPHPExcel->getActiveSheet()->getCell('Y'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['estado'] = $objPHPExcel->getActiveSheet()->getCell('Z'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['observaciones'] = $objPHPExcel->getActiveSheet()->getCell('AA'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['enero'] = $objPHPExcel->getActiveSheet()->getCell('AB'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['febrero'] = $objPHPExcel->getActiveSheet()->getCell('AC'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['marzo'] = $objPHPExcel->getActiveSheet()->getCell('AD'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['abril'] = $objPHPExcel->getActiveSheet()->getCell('AE'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['mayo'] = $objPHPExcel->getActiveSheet()->getCell('AF'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['junio'] = $objPHPExcel->getActiveSheet()->getCell('AG'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['julio'] = $objPHPExcel->getActiveSheet()->getCell('AH'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['agosto'] = $objPHPExcel->getActiveSheet()->getCell('AI'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['septiembre'] = $objPHPExcel->getActiveSheet()->getCell('AJ'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['octubre'] = $objPHPExcel->getActiveSheet()->getCell('AK'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['noviembre'] = $objPHPExcel->getActiveSheet()->getCell('AL'.$i)->getCalculatedValue();
+	$_DATOS_EXCEL[$i]['diciembre'] = $objPHPExcel->getActiveSheet()->getCell('AM'.$i)->getCalculatedValue();
 }		
 }
 //si por algo no cargo el archivo bak_ 
@@ -132,7 +132,6 @@ foreach($_DATOS_EXCEL as $filaNum => $filaContenido){
                 . "tipoContrato = values(tipoContrato),"
                 . "compañia = values(compañia),"
                 . "supervisor = values(supervisor),"
-                . "cambioSup = values(cambioSup),"
                 . "supCivil = values(supCivil),"
                 . "supMecanica = values(supMecanica),"
                 . "supPlantas = values(supPlantas),"
@@ -142,8 +141,8 @@ foreach($_DATOS_EXCEL as $filaNum => $filaContenido){
                 . "inicio = values(inicio),"
                 . "termino = values(termino),"
                 . "plazoEjecucion = values(plazoEjecucion),"
-                . "montoContratadoMult = values(montoContratadoMult),"
-                . "montoContratado = values(montoContratado),"
+                . "montoContratadoMin = values(montoContratadoMin),"
+                . "montoContratadoMax = values(montoContratadoMax),"
                 . "cmPlazoProrroga = values(cmPlazoProrroga),"
                 . "cmMonto = values(cmMonto),"
                 . "unidadInversion = values(unidadInversion),"

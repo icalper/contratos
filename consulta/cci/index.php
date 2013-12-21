@@ -10,12 +10,12 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
 }
 ?>
         <?php
-        $campos = array('especialidad', 'descripcion', 'tipoContrato','compañia', 'supervisor', 'inicio', 'plazoEjecucion', 'estado');
-        $campos_supervisor = array('especialidad', 'descripcion', 'tipoContrato','compañia', 'supervisor', 'inicio', 'plazoEjecucion', 'estado');
+        $campos = array('especialidad', 'descripcion', 'tipoContrato','compañia', 'supervisor', 'inicio', 'plazoEjecucion', 'estado', 'observaciones');
+        $campos_supervisor = array('especialidad', 'descripcion', 'tipoContrato','compañia', 'supervisor', 'inicio', 'plazoEjecucion', 'estado', 'observaciones');
         $nombres_campos = array('Especialidad', 'Descripcion', 'Tipo De Contrato', 'Compania', 'Supervisor', 'Fecha De Inicio', 
-            'Plazo De Ejecucion', 'Estado Que Guarda');
+            'Plazo De Ejecucion', 'Estado Que Guarda', 'Observaciones');
 
-      $ancho_campos = array ('100px', '160px', '250px', '200px', '200px', '200px', '200px');
+      $ancho_campos = array ('100px', '160px', '250px', '200px', '200px', '200px', '200px', '300px');
 
         $campos_consulta = array();
 

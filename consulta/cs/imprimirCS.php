@@ -1,9 +1,8 @@
 <?php
 
-$campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'cambioSup', 'supCivil', 'supMecanica', 'supPlantas', 'supElectrica', 'supInstrumentos', 'multianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'saldo2013', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
-$nombres_campos = array('Especialidad', 'Numero de Contrato RMIN', 'Descripcion', 'Tipo de contrato', 'Compania', 'Supervisor', 'Cambio de Supervisor',
-    'Supervisor Fase Civil', 'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Eelectrica', 'Supervisor Fase Instrumentos', 'Multianualidad',
-    'Fecha De Inicio', 'Fecha de Termino', 'Plazo De Ejecucion', 'Monto Contratado Multianual', 'Monto Contratado', 'Convenio Mondificatorio Plazo Prorroga',
+$campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'supCivil', 'supMecanica', 'supPlantas', 'supElectrica', 'supInstrumentos', 'multianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMin', 'montoContratadoMax', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'saldo2013', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+$nombres_campos = array('Especialidad', 'Numero de Contrato RMIN', 'Descripcion', 'Tipo de contrato', 'Compania', 'Supervisor', 'Supervisor Fase Civil', 'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Eelectrica', 'Supervisor Fase Instrumentos', 'Multianualidad',
+    'Fecha De Inicio', 'Fecha de Termino', 'Plazo De Ejecucion', 'Monto Contratado (Minimo)', 'Monto Contratado (Maximo)', 'Convenio Mondificatorio Plazo Prorroga',
     'Convenio Modificatorio Monto', 'Unidad De Inversion', 'Numero De Pedido SAP', 'Monto Pagado 2011 2012', 'Saldo 2011 2012', 'Estimado 2013 Pagado',
     'Saldo 2013', 'Estado Que Guarda', 'Observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre',
     'noviembre', 'diciembre');
@@ -93,7 +92,7 @@ for ($i = 4; $i < 40; $i++) {
     $objPHPExcel->getActiveSheet()->getColumnDimensionByColumn($i)->setAutoSize(true);
 }
 
-$objPHPExcel->getActiveSheet()->getStyle('A1:AN200')
+$objPHPExcel->getActiveSheet()->getStyle('A1:AM200')
         ->getAlignment()->setWrapText(true);
 
 //CABECERA DE LA CONSULTA
@@ -110,7 +109,7 @@ foreach ($campos as $key => $valor) {
 }
 
 $objPHPExcel->getActiveSheet()
-        ->getStyle('A5:AN5')
+        ->getStyle('A5:AM5')
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
         ->getStartColor()->setARGB('B48F6A');
@@ -125,7 +124,7 @@ $borders = array(
 );
 
 $objPHPExcel->getActiveSheet()
-        ->getStyle('A5:AN5')
+        ->getStyle('A5:AM5')
         ->applyFromArray($borders);
 
 
@@ -150,7 +149,7 @@ while ($row = mysql_fetch_array($rec)) {
     $y++;
     //BORDE DE LA CELDA
     $objPHPExcel->setActiveSheetIndex(0)
-            ->getStyle('A' . $y . ":AN" . $y)
+            ->getStyle('A' . $y . ":AM" . $y)
             ->applyFromArray($borders);
 
     //MOSTRAMOS LOS VALORES

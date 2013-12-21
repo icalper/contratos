@@ -1,5 +1,5 @@
 <?php
-$aColumns = array('numServicio','numContrato', 'especialidad', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'cambioSup', 'supCivil', 'supMecanica', 'supPlantas', 'supElectrica', 'supInstrumentos', 'multianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'saldo2013', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+$aColumns = array('numServicio','numContrato', 'especialidad', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'supCivil', 'supMecanica', 'supPlantas', 'supElectrica', 'supInstrumentos', 'multianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMin', 'montoContratadoMax', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'saldo2013', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
 
 $cn = mysql_connect ("localhost","root","123") or die ("ERROR EN LA CONEXION");
 $db = mysql_select_db ("contratos",$cn) or die ("ERROR AL CONECTAR A LA BD");

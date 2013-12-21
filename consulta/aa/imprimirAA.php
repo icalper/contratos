@@ -49,7 +49,7 @@ date_default_timezone_set('America/Santiago');
 require_once "../../librerias/PHPExcel.php";
 
 //VARIABLES DE PHP
-$objPHPExcel = PHPExcel_IOFactory::load("acuerdos_administrativos.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("contrato_de_obra.xlsx");
 $Archivo = "Reporte De Acuerdos Administrativos " . date("Y-m-d h:m:s");
 
 

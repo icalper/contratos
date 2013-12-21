@@ -16,7 +16,7 @@
 	/* Array of database columns which should be read and sent back to DataTables. Use a space where
 	 * you want to insert a non-database field (for example a counter or static image)
 	 */
-	$aColumns = array('numObra', 'numContrato', 'especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+	$aColumns = array('numObra', 'numContrato', 'especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicioContractual', 'terminoContractual', 'inicioReal', 'terminoReal', 'plazoEjecucion', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'reFisica', 'finiquito', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
 	
         //$aColumns=$_SESSION[$campos];
         

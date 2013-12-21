@@ -62,7 +62,7 @@ $cn = mysql_connect ("localhost","root","123") or die ("ERROR EN LA CONEXION");
 $db = mysql_select_db ("contratos",$cn) or die ("ERROR AL CONECTAR A LA BD");
 
         // Llenamos el arreglo con los datos  del archivo xlsx
-for ($i=5;$i<=100;$i++){
+for ($i=6;$i<=200;$i++){
 	$_DATOS_EXCEL[$i]['especialidad'] = $objPHPExcel->getActiveSheet()->getCell('A'.$i)->getCalculatedValue();
 	$_DATOS_EXCEL[$i]['numContrato'] = $objPHPExcel->getActiveSheet()->getCell('B'.$i)->getCalculatedValue();
         //se agrega mysql_real_escape_string() para evitar error por datos con ' y que finalize la consulta.
@@ -77,6 +77,7 @@ for ($i=5;$i<=100;$i++){
         
        	$_DATOS_EXCEL[$i]['plazoEjecucion'] = $objPHPExcel->getActiveSheet()->getCell('H'.$i)->getCalculatedValue();
 	$_DATOS_EXCEL[$i]['estado'] = $objPHPExcel->getActiveSheet()->getCell('I'.$i)->getCalculatedValue();
+        $_DATOS_EXCEL[$i]['observaciones'] = $objPHPExcel->getActiveSheet()->getCell('J'.$i)->getCalculatedValue();
 	}		
 }
 //si por algo no cargo el archivo bak_ 
@@ -89,7 +90,7 @@ foreach($_DATOS_EXCEL as $filaNum => $filaContenido){
 	$sql = "INSERT INTO contratoCompraInstalacion VALUES (null,'";
         $sql2 = "INSERT INTO contrato VALUES (null,'";
 	foreach ($filaContenido as $campoNombre => $campoValor){
-                $campoNombre == "estado" ? $sql.= $campoValor."') " : $sql.= $campoValor."','";
+                $campoNombre == "observaciones" ? $sql.= $campoValor."') " : $sql.= $campoValor."','";
 		if($campoNombre == "numContrato") {
                     $sql2.= $campoValor."','CcI');";
                 }
@@ -103,7 +104,8 @@ foreach($_DATOS_EXCEL as $filaNum => $filaContenido){
                 . "supervisor = values(supervisor),"
                 . "inicio = values(inicio),"
                 . "plazoEjecucion = values(plazoEjecucion),"
-                . "estado = values(estado);";
+                . "estado = values(estado);"
+                . "observaciones = values(observaciones);";
         
 	
            $result2 = mysql_query($sql2);

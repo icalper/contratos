@@ -1,12 +1,12 @@
 <?php
 
-        $campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicio', 'termino', 'plazoEjecucion', 'montoContratadoMult', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+        $campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicioContractual', 'terminoContractual', 'inicioReal', 'terminoReal', 'plazoEjecucion', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'reFisica', 'finiquito', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
       
         $nombres_campos = array('Especialidad', 'Numero de Contrato RMIN', 'Descripcion', 'Tipo de contrato', 'Compania', 'Residente', 'Supervisor Fase Civil', 
             'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Eelectrica', 'Supervisor Fase Instrumentos', 'Plurianualidad', 
-            'Fecha De Inicio', 'Fecha de Termino', 'Plazo De Ejecucion', 'Monto Contratado Multianual', 'Monto Contratado', 'Convenio Mondificatorio Plazo Prorroga', 
-            'Convenio Modificatorio Monto', 'Unidad De Inversion', 'Numero De Pedido SAP', 'Monto Pagado 2011 2012', 'Saldo 2011 2012', 'Estimado 2013 Pagado', 
-            'Estimado del Convenio', 'Saldo 2013', 'avanceFisico', 'avanceFinanciero', 'Estado Que Guarda', 'Observaciones', 'enero', 'febrero', 'marzo', 'abril', 
+            'Fecha De Inicio Contractual', 'Fecha de TerminoContractual', 'Fecha de Inicio Real', 'Fecha de Termino Real', 'Plazo De Ejecucion', 'Monto Contratado', 'Convenio Mondificatorio Plazo Prorroga', 
+            'Convenio Modificatorio Monto', 'Unidad De Inversion', 'Numero De Pedido SAP', 'Monto Pagado 2011 2012', 'Saldo 2011 2012', 'Estimado 2013', 
+            'Estimado del Convenio', 'Saldo 2013', 'Avance Fisico', 'Avance Financiero', 'Estado Que Guarda', 'Recepcion Fisica', 'Finiquito', 'Observaciones', 'enero', 'febrero', 'marzo', 'abril', 
             'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
 
 $registros_consulta = array();
@@ -88,11 +88,11 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth(50);
 
 
-for ($i = 4; $i < 42; $i++) {
+for ($i = 4; $i < 50; $i++) {
     $objPHPExcel->getActiveSheet()->getColumnDimensionByColumn($i)->setAutoSize(true);
 }
 
-$objPHPExcel->getActiveSheet()->getStyle('A1:AP200')
+$objPHPExcel->getActiveSheet()->getStyle('A1:AS200')
         ->getAlignment()->setWrapText(true);
 
 
@@ -109,7 +109,7 @@ foreach ($campos as $key => $valor) {
 }
 
 $objPHPExcel->getActiveSheet()
-        ->getStyle('A5:AP5')
+        ->getStyle('A5:AS5')
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
         ->getStartColor()->setARGB('B48F6A');
@@ -124,7 +124,7 @@ $borders = array(
 );
 
 $objPHPExcel->getActiveSheet()
-        ->getStyle('A5:AP5')
+        ->getStyle('A5:AR5')
         ->applyFromArray($borders);
 
 
@@ -149,7 +149,7 @@ while ($row = mysql_fetch_array($rec)) {
     $y++;
     //BORDE DE LA CELDA
     $objPHPExcel->setActiveSheetIndex(0)
-            ->getStyle('A' . $y . ":AP" . $y)
+            ->getStyle('A' . $y . ":AS" . $y)
             ->applyFromArray($borders);
 
     //MOSTRAMOS LOS VALORES

@@ -1,8 +1,8 @@
 <?php
 
-$campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'inicio', 'plazoEjecucion', 'estado');
+$campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'inicio', 'plazoEjecucion', 'estado', 'observaciones');
 $nombres_campos = array('Especialidad', 'Numero de Contrato RMIN', 'Descripcion', 'Tipo de contrato', 'Compania', 'Supervisor', 
-    'Fecha De Inicio', 'Plazo De Ejecucion', 'Estado Que Guarda');
+    'Fecha De Inicio', 'Plazo De Ejecucion', 'Estado Que Guarda', 'Observaciones');
 
 
 $registros_consulta = array();
@@ -49,7 +49,7 @@ date_default_timezone_set('America/Santiago');
 require_once "../../librerias/PHPExcel.php";
 
 //VARIABLES DE PHP
-$objPHPExcel = PHPExcel_IOFactory::load("contrato_de_compra_instalacion.xlsx");
+$objPHPExcel = PHPExcel_IOFactory::load("formato_cci.xlsx");
 $Archivo = "Reporte De Compras Con Instalacion" . date("Y-m-d h:m:s");
 
 
@@ -87,7 +87,7 @@ for ($i = 4; $i < 20; $i++) {
     $objPHPExcel->getActiveSheet()->getColumnDimensionByColumn($i)->setAutoSize(true);
 }
 
-$objPHPExcel->getActiveSheet()->getStyle('A1:I200')
+$objPHPExcel->getActiveSheet()->getStyle('A1:L200')
         ->getAlignment()->setWrapText(true);
 
 //CABECERA DE LA CONSULTA
@@ -104,7 +104,7 @@ foreach ($campos as $key => $valor) {
 }
 
 $objPHPExcel->getActiveSheet()
-        ->getStyle('A5:I5')
+        ->getStyle('A5:L5')
         ->getFill()
         ->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
         ->getStartColor()->setARGB('B48F6A');
@@ -144,7 +144,7 @@ while ($row = mysql_fetch_array($rec)) {
     $y++;
     //BORDE DE LA CELDA
     $objPHPExcel->setActiveSheetIndex(0)
-            ->getStyle('A' . $y . ":I" . $y)
+            ->getStyle('A' . $y . ":L" . $y)
             ->applyFromArray($borders);
 
     //MOSTRAMOS LOS VALORES
