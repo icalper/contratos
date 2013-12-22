@@ -24,7 +24,7 @@
 	$sIndexColumn = "numContrato";
 	
 	/* DB table to use */
-	$sTable = "contratoObra";
+	$sTable = "contratoobra";
 	
 	/* Database connection information */
 	$gaSql['user']       = "root";
@@ -208,4 +208,5 @@
 	}
 	
 	echo json_encode( $output );
+        mysql_close($gaSql['link']);
 ?>

@@ -9,7 +9,7 @@ $value = filter_input(INPUT_POST, "value");
 
 $id = substr($row_id, 4);
 
-$sql="UPDATE `contratos`.`acuerdoAdministrativo` SET `$aColumns[$column]`='$value' WHERE `numAcuerdo`='$id';";
+$sql="UPDATE `contratos`.`acuerdoadministrativo` SET `$aColumns[$column]`='$value' WHERE `numAcuerdo`='$id';";
 
 echo mysql_query($sql);
 

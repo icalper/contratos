@@ -49,7 +49,7 @@ $campos_filtrados = array_filter($campos_consulta);
 
         <script type="text/javascript" charset="utf-8">
             $(document).ready(function() {
-                //$('ul.sf-menu').sooperfish();
+                $('ul.sf-menu').sooperfish();
                 $('#excel').click(function() {
                     var sTabla = oTable.$('input').serialize();
                     var sCampos = $('#campos').serialize();
@@ -156,7 +156,8 @@ foreach ($campos as $id => $valor) {
 
                     <form id="campos" action="<?php echo $PHP_SELF; ?>" enctype="multipart/form-data" method="POST">
                         <div class="form_settings">
-                        <table style="border-width: 0" class="display">
+                        <div class="tabla"><table style="border-width: 0" class="display">
+                            
                             <?php
                             echo ("<tr>");
                             
@@ -178,7 +179,8 @@ foreach ($campos as $id => $valor) {
                             }
                             echo ("</tr>");
                             ?>
-                        </table>
+                                
+                        </table></div>
                             <input class="submit" type="submit" name="Enviar" value="Consultar">
                         </div>
                     </form>
@@ -201,6 +203,7 @@ foreach ($campos as $id => $valor) {
                                     ?>
                                 </tr>
                             </thead>
+                            
                             <tbody>
 
                             </tbody>

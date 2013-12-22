@@ -130,10 +130,10 @@ $objPHPExcel->getActiveSheet()
 
 //DETALLE DE LA CONSULTA
 if (sizeof($registros_filtrados) == 1) {
-    $sql = "SELECT * FROM contratoServicio WHERE numContrato = '$registros_filtrados[0]'";
+    $sql = "SELECT * FROM contratoservicio WHERE numContrato = '$registros_filtrados[0]'";
 } else {
     $reg_count=1;
-    $sql = "SELECT * FROM contratoServicio WHERE ";
+    $sql = "SELECT * FROM contratoservicio WHERE ";
     foreach ($registros_filtrados as $key => $value) {
         $sql.="numContrato = '$value' ";
         if (sizeof($registros_filtrados) > $reg_count) {

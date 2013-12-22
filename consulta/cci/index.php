@@ -158,7 +158,7 @@ foreach ($campos as $id => $valor) {
 
                     <form id="campos" action="<?php echo $PHP_SELF; ?>" enctype="multipart/form-data" method="POST">
                         <div class="form_settings">
-                        <table style="border-width: 0" class="display">
+                        <div class="tabla"><table style="border-width: 0" class="display">
                             <?php
                             echo ("<tr>");
                             
@@ -180,7 +180,7 @@ foreach ($campos as $id => $valor) {
                             }
                             echo ("</tr>");
                             ?>
-                        </table>
+                            </table></div>
                             <input class="submit" type="submit" name="Enviar" value="Consultar">
                         </div>
                     </form>
