@@ -59,4 +59,5 @@ function tipoContratos($idUsuario) {
     return $tipoContratos;
 }
 
+mysql_close($cn);
 ?>

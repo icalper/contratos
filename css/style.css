@@ -371,11 +371,11 @@ footer a:hover {
   margin: 0 0 20px 0;
 }
   
-table { 
+.tabla table { 
   margin: 10px 0 30px 0;
 }
 
-table tr th, table tr td { 
+.tabla table tr th, .tabla table tr td { 
   background: #70D4E6;
   color: #FFF;
   padding: 7px 4px;
@@ -383,7 +383,7 @@ table tr th, table tr td {
   font-size: smaller;
 }
   
-table tr td { 
+.tabla table tr td { 
   background: #D3F2F7;
   color: #47433F;
   border-top: 1px solid #FFF;

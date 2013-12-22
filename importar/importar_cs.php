@@ -118,7 +118,7 @@ else{echo "<p>El archivo no se ha podido importar o no se ha seleccionado un arc
 //para ir recuperando los datos obtenidos
 //del excel e ir insertandolos en la BD
 foreach($_DATOS_EXCEL as $filaNum => $filaContenido){
-	$sql = "INSERT INTO contratoServicio VALUES (null,'";
+	$sql = "INSERT INTO contratoservicio VALUES (null,'";
         $sql2 = "INSERT INTO contrato VALUES (null,'";
 	foreach ($filaContenido as $campoNombre => $campoValor){
                 $campoNombre == "diciembre" ? $sql.= $campoValor."') " : $sql.= $campoValor."','";

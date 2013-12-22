@@ -87,7 +87,7 @@ $errores=0;
 //para ir recuperando los datos obtenidos
 //del excel e ir insertandolos en la BD
 foreach($_DATOS_EXCEL as $filaNum => $filaContenido){
-	$sql = "INSERT INTO contratoCompraInstalacion VALUES (null,'";
+	$sql = "INSERT INTO contratocomprainstalacion VALUES (null,'";
         $sql2 = "INSERT INTO contrato VALUES (null,'";
 	foreach ($filaContenido as $campoNombre => $campoValor){
                 $campoNombre == "observaciones" ? $sql.= $campoValor."') " : $sql.= $campoValor."','";

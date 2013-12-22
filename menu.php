@@ -32,6 +32,16 @@
         <li><a href="<?php echo $menuNivel; ?>usuario.php">Lista de usuarios</a></li>
     </ul></li>
     <?php }?>
+    <?php if($sesion->getPrivilegios() == manejadorSesion::USUARIO_CREADOR){ ?>
+    <li><a href="#">Crear</a>
+        <ul>
+            <li><a href="<?php echo $menuNivel; ?>crearContrato.php?c=cs">Contrato de Servicio</a></li>
+            <li><a href="<?php echo $menuNivel; ?>crearContrato.php?c=co">Contrato de Obra</a></li>
+            <li><a href="<?php echo $menuNivel; ?>crearContrato.php?c=cci">Contrato de Compra con Instalacion</a></li>
+            <li><a href="<?php echo $menuNivel; ?>crearContrato.php?c=aa">Contrato de Acuerdos Administrativos</a></li>
+        </ul>
+    </li>
+    <?php }?>
 </ul>
 <ul class="sf-menu" id="nav2">
     <li>

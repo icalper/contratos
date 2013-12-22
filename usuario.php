@@ -171,7 +171,7 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {
                         </div>
                         </form>
                         
-                        <table>
+                        <div class="tabla"><table>
                         <thead><th>Contrato</th><th>Tipo</th><th>Accion</th></thead>
                         <tbody>
                             <?php
@@ -184,7 +184,7 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {
                         }
                         ?>
                         </tbody>
-                        </table>
+                            </table></div>
                         
                     <?php  break;               // Lista de usuarios
                         default : ?>
@@ -193,7 +193,7 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {
                     <?php $usuarios = getUsuarios();?>
                     <h2 style="color: <?php echo $_SESSION['msg'][0]; ?>">
                         <?php echo $_SESSION['msg'][1]; unset($_SESSION['msg'])?></h2>
-                    <table>
+                    <div class="tabla"><table>
                         <thead><th>Usuario</th><th>Nombre</th><th>Nivel</th><th>Acciones</th></thead>
                     <tbody>
                         <?php 
@@ -214,7 +214,7 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {
                         }
                         ?>
                     </tbody>
-                    </table>
+                        </table></div>
                     
                     
                     <?php } ?>
@@ -232,10 +232,9 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {
         <script type="text/javascript">
             $(document).ready(function() {
                 $('ul.sf-menu').sooperfish();
-<?php if (sizeof($msg) > 1) { ?>
-                    alert("<?php echo $msg ?>");
-<?php } mysql_close($db);?>
+
             });
         </script>
     </body>
 </html>
+<?php mysql_close($cn); ?>
