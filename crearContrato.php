@@ -69,9 +69,32 @@ if ($sesion->getPrivilegios() != $nivelAcceso) {
                             <p><span>Descripcion:</span>
                                 <textarea rows="6" name="descripcion"></textarea></p>
                             
+                            <?php if($c == "cs" || $c == "co"){?>
+                            <p><span>Monto:</span>
+                                <input class="contact" type="text" name="cmmonto"/></p>
+                            <?php }?>
+                            
                             <p><span>Fecha Inicio:</span>
-                                <input class="contact" id="fecha" type="text" name="fechainicio"/></p>
-
+                                <input class="contact" id="fecha" type="text" name="fechainicio"/></p><?php
+                                
+                                if($c == "cs" || $c == "co" || $c == "aa"){ 
+                              ?><p><span>Fecha de Termino:</span>
+                                <input class="contact" id="fecha2" type="text" name="termino"/></p><?php }
+                            
+                            if($c == "cs" || $c == "co" || $c == "cci"){
+                              
+                              ?><p><span>Plazo de Ejecucion:</span>
+                                <input class="contact" type="text" name="plazoejecucion"/></p><?php }
+                            
+                            if($c == "cs" || $c == "co"){
+                                
+                              ?><p><span>Num. Pedido SAP:</span>
+                                <input class="contact" type="text" name="sap"/></p><?php }
+                            
+                            if($c == "cs" || $c == "co"){
+                                
+                              ?><p><span>Unidad de Inversion:</span>
+                                <input class="contact" type="text" name="unidadinversion"/></p><?php }?>
                             <p><span>Tipo de contrato:</span>
                                 <select disabled size="4" name="tipoc2">
                                     <option <?php if($c == "aa") { echo "selected"; }?> value="aa">Acuerdo Administrativo</option>
@@ -104,7 +127,7 @@ if ($sesion->getPrivilegios() != $nivelAcceso) {
         <script type="text/javascript">
             $.datepicker.setDefaults(
                     $.extend(
-                            {'dateFormat': 'dd/mm/yyyy'},
+                            {'dateFormat': 'yyyy-mm-dd'},
                     $.datepicker.regional['es']
                             )
                     );
@@ -115,8 +138,13 @@ if ($sesion->getPrivilegios() != $nivelAcceso) {
                     changeYear: true,
                     autoclose: true
                 });
+                $("#fecha2").datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    autoclose: true
+                });
             });
-            $.datepicker.setDefaults($.datepicker.regional['es-MX']);
+            //$.datepicker.setDefaults($.datepicker.regional['es-MX']);
         </script>
     </body>
 </html>
