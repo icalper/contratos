@@ -25,7 +25,6 @@ $registros_filtrados = array_filter($registros_consulta);
 $campos_filtrados = array_filter($campos_consulta);
 
 
-
 /**
  * PHPExcel
  *
@@ -133,7 +132,8 @@ $objPHPExcel->getActiveSheet()
 
 //DETALLE DE LA CONSULTA
 if (sizeof($registros_filtrados) == 1) {
-    $sql = "SELECT * FROM contratoservicio WHERE numContrato = '$registros_filtrados[0]'";
+    $key = key($registros_filtrados);
+    $sql = "SELECT * FROM contratoservicio WHERE numContrato = '$registros_filtrados[$key]'";
 } else {
     $reg_count=1;
     $sql = "SELECT * FROM contratoservicio WHERE ";
@@ -163,7 +163,6 @@ while ($row = mysql_fetch_array($rec)) {
         $objPHPExcel->setActiveSheetIndex(0)->setCellValue($columna . $y, $row[$valor]);
         $columna++;
         }
-
 }
 
 //DATOS DE LA SALIDA DEL EXCEL
