@@ -11,9 +11,10 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
 ?>
         <?php
         $campos = array('especialidad', 'descripcion', 'tipoContrato','compañia', 'supervisor', 'inicio', 'plazoEjecucion', 'estado', 'observaciones');
-        $campos_supervisor = array('especialidad', 'descripcion', 'tipoContrato','compañia', 'supervisor', 'inicio', 'plazoEjecucion', 'estado', 'observaciones');
+        $campos_supervisor = array('estado', 'observaciones');
         $nombres_campos = array('Especialidad', 'Descripcion', 'Tipo De Contrato', 'Compania', 'Supervisor', 'Fecha De Inicio', 
             'Plazo De Ejecucion', 'Estado Que Guarda', 'Observaciones');
+        $nombres_campos_supervisor = array('estado', 'observaciones');
 
       $ancho_campos = array ('100px', '160px', '250px', '200px', '200px', '200px', '200px', '300px');
 
@@ -164,10 +165,11 @@ foreach ($campos as $id => $valor) {
                             
                             if ( $sesion->getPrivilegios() == manejadorSesion::USUARIO_SUPERVISOR){
                                 $campos_checkbox = $campos_supervisor;
+                                $nombres_checkbox = $nombres_campos_supervisor;
                             }else{
                                 $campos_checkbox = $campos;
-                            }
-                            
+                                $nombres_checkbox = $nombres_campos;
+                            }                          
                             foreach ($campos_checkbox as $id => $valor) {
                                 if ($id % 8 == 0) {
                                     echo ("</tr><tr>");
@@ -176,7 +178,7 @@ foreach ($campos as $id => $valor) {
                                 if (in_array($valor, $campos_filtrados)) {
                                     $checked = "checked";
                                 }
-                                echo ("<td><p><input class=\"contact checkbox\" type=\"checkbox\" name=\"$id\" value=\"$valor\" $checked>$nombres_campos[$id]</p></td>");
+                                echo ("<td><p><input class=\"contact checkbox\" type=\"checkbox\" name=\"$id\" value=\"$valor\" $checked>$nombres_checkbox[$id]</p></td>");
                             }
                             echo ("</tr>");
                             ?>

@@ -11,13 +11,16 @@ if ($sesion->getPrivilegios() < $nivelAcceso) {    // Codigo para la seguridad p
 ?>
         <?php
         $campos = array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicioContractual', 'terminoContractual', 'inicioReal', 'terminoReal', 'plazoEjecucion', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'reFisica', 'finiquito', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
-        $campos_supervisor= array('especialidad', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicioContractual', 'terminoContractual', 'inicioReal', 'terminoReal', 'plazoEjecucion', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'reFisica', 'finiquito', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+        $campos_supervisor = array('cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'saldo2013', 'estado', 'observaciones');
         $nombres_campos = array('Especialidad', 'Descripcion', 'Tipo de contrato', 'Compania', 'Residente', 'Supervisor Fase Civil', 
             'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Electrica', 'Supervisor Fase Instrumentos', 'Plurianualidad', 
             'Fecha De Inicio Contractual', 'Fecha de TerminoContractual', 'Fecha de Inicio Real', 'Fecha de Termino Real', 'Plazo De Ejecucion', 'Monto Contratado', 'Convenio Mondificatorio Plazo Prorroga', 
             'Convenio Modificatorio Monto', 'Unidad De Inversion', 'Numero De Pedido SAP', 'Monto Pagado 2011 2012', 'Saldo 2011 2012', 'Estimado 2013', 
             'Estimado del Convenio', 'Saldo 2013', 'avanceFisico', 'avanceFinanciero', 'Estado Que Guarda', 'Recepcion Fisica', 'Finiquito', 'Observaciones', 'enero', 'febrero', 'marzo', 'abril', 
             'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
+        $nombres_campos_supervisor = array( 'Convenio Mondificatorio Plazo Prorroga', 'Convenio Modificatorio Monto', 
+            'Unidad De Inversion', 'Numero De Pedido SAP', 'Monto Pagado 2011 2012', 'Saldo 2011 2012', 
+            'Estimado 2013 Pagado',  'Saldo 2013', 'Estado Que Guarda', 'Observaciones');
         
         $ancho_campos = array ('190px', '190px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '100px', '100px', '100px', '200px', 
             '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '200px', '300px', '100px', '100px', '100px', 
@@ -170,10 +173,11 @@ foreach ($campos as $id => $valor) {
                                     
                             if ( $sesion->getPrivilegios() == manejadorSesion::USUARIO_SUPERVISOR){
                                 $campos_checkbox = $campos_supervisor;
+                                $nombres_checkbox = $nombres_campos_supervisor;
                             }else{
                                 $campos_checkbox = $campos;
+                                $nombres_checkbox = $nombres_campos;
                             }
-                            
                             foreach ($campos_checkbox as $id => $valor) {
                                 if ($id % 6 == 0) {
                                     echo ("</tr><tr>");
@@ -182,7 +186,7 @@ foreach ($campos as $id => $valor) {
                                 if (in_array($valor, $campos_filtrados)) {
                                     $checked = "checked";
                                 }
-                                echo ("<td><p><input class=\"contact checkbox\" type=\"checkbox\" name=\"$id\" value=\"$valor\" $checked>$nombres_campos[$id]</p></td>");
+                                      echo ("<td><p><input class=\"contact checkbox\" type=\"checkbox\" name=\"$id\" value=\"$valor\" $checked>$nombres_checkbox[$id]</p></td>");
                             }
                             echo ("</tr>");
                             ?>

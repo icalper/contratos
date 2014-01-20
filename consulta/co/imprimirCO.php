@@ -1,14 +1,17 @@
 <?php
 
         $campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'compañia', 'residente', 'supCivil', 'supMecanica', 'supPlan', 'supElectrica', 'supInstrumentos', 'plurianualidad', 'inicioContractual', 'terminoContractual', 'inicioReal', 'terminoReal', 'plazoEjecucion', 'montoContratado', 'cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'estimadoConvenio' ,'saldo2013', 'avanceFisico', 'avanceFinanciero', 'estado', 'reFisica', 'finiquito', 'observaciones', 'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
-      
+        $campos_supervisor = array('cmPlazoProrroga', 'cmMonto', 'unidadInversion', 'sap', 'pagado20112012', 'saldo20112012', 'estimado2013', 'saldo2013', 'estado', 'observaciones');
         $nombres_campos = array('Especialidad', 'Numero de Contrato RMIN', 'Descripcion', 'Tipo de contrato', 'Compania', 'Residente', 'Supervisor Fase Civil', 
             'Supervisor Fase Mecanica', 'Supervisor Fase Plantas', 'Supervisor Fase Eelectrica', 'Supervisor Fase Instrumentos', 'Plurianualidad', 
             'Fecha De Inicio Contractual', 'Fecha de TerminoContractual', 'Fecha de Inicio Real', 'Fecha de Termino Real', 'Plazo De Ejecucion', 'Monto Contratado', 'Convenio Mondificatorio Plazo Prorroga', 
             'Convenio Modificatorio Monto', 'Unidad De Inversion', 'Numero De Pedido SAP', 'Monto Pagado 2011 2012', 'Saldo 2011 2012', 'Estimado 2013', 
             'Estimado del Convenio', 'Saldo 2013', 'Avance Fisico', 'Avance Financiero', 'Estado Que Guarda', 'Recepcion Fisica', 'Finiquito', 'Observaciones', 'enero', 'febrero', 'marzo', 'abril', 
             'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre');
-
+        $nombres_campos_supervisor = array( 'Convenio Mondificatorio Plazo Prorroga',
+            'Convenio Modificatorio Monto', 'Unidad De Inversion', 'Numero De Pedido SAP', 'Monto Pagado 2011 2012', 'Saldo 2011 2012', 'Estimado 2013 Pagado',
+            'Saldo 2013', 'Estado Que Guarda', 'Observaciones');
+        
 $registros_consulta = array();
 $campos_consulta = array();
 
@@ -130,7 +133,8 @@ $objPHPExcel->getActiveSheet()
 
 //DETALLE DE LA CONSULTA
 if (sizeof($registros_filtrados) == 1) {
-    $sql = "SELECT * FROM contratoobra WHERE numContrato = '$registros_filtrados[0]'";
+    $inicio_arreglo = key($registros_filtrados);
+    $sql = "SELECT * FROM contratoobra WHERE numContrato = '$registros_filtrados[$inicio_arreglo]'";
 } else {
     $reg_count=1;
     $sql = "SELECT * FROM contratoobra WHERE ";

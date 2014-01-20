@@ -132,8 +132,8 @@ $objPHPExcel->getActiveSheet()
 
 //DETALLE DE LA CONSULTA
 if (sizeof($registros_filtrados) == 1) {
-    $key = key($registros_filtrados);
-    $sql = "SELECT * FROM contratoservicio WHERE numContrato = '$registros_filtrados[$key]'";
+    $inicio_arreglo = key($registros_filtrados);
+    $sql = "SELECT * FROM contratoservicio WHERE numContrato = '$registros_filtrados[$inicio_arreglo]'";
 } else {
     $reg_count=1;
     $sql = "SELECT * FROM contratoservicio WHERE ";

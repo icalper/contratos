@@ -182,7 +182,7 @@ foreach ($campos as $id => $valor) {
                                 if ($id % 5 == 0) {
                                     echo ("</tr><tr>");
                                 }
-                                $checked = "";
+                            $checked = "";
                                 if (in_array($valor, $campos_filtrados)) {
                                     $checked = "checked";
                                 }

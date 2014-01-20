@@ -1,8 +1,10 @@
 <?php
 
 $campos = array('especialidad', 'numContrato', 'descripcion', 'tipoContrato', 'compañia', 'supervisor', 'inicio', 'plazoEjecucion', 'estado', 'observaciones');
+$campos_supervisor = array('estado', 'observaciones');
 $nombres_campos = array('Especialidad', 'Numero de Contrato RMIN', 'Descripcion', 'Tipo de contrato', 'Compania', 'Supervisor', 
     'Fecha De Inicio', 'Plazo De Ejecucion', 'Estado Que Guarda', 'Observaciones');
+$nombres_campos_supervisor = array('estado', 'observaciones');
 
 
 $registros_consulta = array();
@@ -125,7 +127,8 @@ $objPHPExcel->getActiveSheet()
 
 //DETALLE DE LA CONSULTA
 if (sizeof($registros_filtrados) == 1) {
-    $sql = "SELECT * FROM contratocomprainstalacion WHERE numContrato = '$registros_filtrados[0]'";
+    $inicio_arreglo = key($registros_filtrados);
+    $sql = "SELECT * FROM contratocomprainstalacion WHERE numContrato = '$registros_filtrados[$inicio_arreglo]'";
 } else {
     $reg_count=1;
     $sql = "SELECT * FROM contratocomprainstalacion WHERE ";
